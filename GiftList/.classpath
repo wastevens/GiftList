@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="src/test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/default/commons-lang3.jar"/>
+	<classpathentry kind="lib" path="lib/default/TheWheel.jar"/>
+	<classpathentry kind="lib" path="lib/testDefault/mockito-all.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
