@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="lib/default/commons-lang3.jar"/>
 	<classpathentry kind="lib" path="lib/default/TheWheel.jar"/>
 	<classpathentry kind="lib" path="lib/testDefault/mockito-all.jar"/>
+	<classpathentry kind="lib" path="lib/testDefault/TestUtilities.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

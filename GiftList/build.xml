@@ -3,6 +3,10 @@
 
 <property file="build.properties"/>
 
+<mkdir dir="${lib.dir}"/>
+<mkdir dir="${build.dir}"/>
+<mkdir dir="${dist.dir}"/>
+	
 <path id="classpath">
   <pathelement path="${classpath}"/>
   <fileset dir="${lib.dir}">
