@@ -2,7 +2,8 @@ package com.dstevens.users;
 
 import static com.dstevens.collections.Lists.*;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import com.dstevens.gifts.Gift;
 import com.dstevens.utilities.ObjectExtensions;
@@ -28,6 +29,25 @@ class Wishlist {
 
     public void removeGift(Gift gift) {
         this.gifts.remove(gift);
+    }
+
+    public List<Gift> getGifts() {
+        return gifts;
+    }
+    
+    public void commentOn(final Gift gift, User user, String comment) {
+        Optional<Gift> foundGift = gifts.stream().filter(g -> g.equals(gift)).findFirst();
+        if(foundGift.isPresent()) {
+            foundGift.get().addComment(user, comment);
+        }
+    }
+    
+    public Wishlist asViewedByOwner() {
+        return Wishlist.with(gifts.stream().map((g -> g.withoutComments())).collect(Collectors.toList()));
+    }
+
+    public Wishlist asViewedByFriend() {
+        return this;
     }
     
     @Override

@@ -15,6 +15,23 @@ public class Gift implements Comparable<Gift>{
     public Gift(String description) {
         this.description = description;
     }
+
+    @Override
+    public int compareTo(Gift that) {
+        return this.description.compareTo(that.description);
+    }
+
+    public void addComment(User user, String comment) {
+        comments.add(new GiftComment(user, comment));
+    }
+
+    public List<GiftComment> getComments() {
+        return comments;
+    }
+
+    public Gift withoutComments() {
+        return new Gift(description);
+    }
     
     @Override
     public boolean equals(Object obj) {
@@ -34,18 +51,4 @@ public class Gift implements Comparable<Gift>{
     public String toString() {
         return ObjectExtensions.toStringFor(this);
     }
-
-    @Override
-    public int compareTo(Gift that) {
-        return this.description.compareTo(that.description);
-    }
-
-    public void addComment(User user, String comment) {
-        comments.add(new GiftComment(user, comment));
-    }
-
-    public List<GiftComment> getComments() {
-        return comments;
-    }
-    
 }

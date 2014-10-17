@@ -2,12 +2,13 @@ package com.dstevens.users;
 
 import static com.dstevens.collections.Lists.list;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
 import java.util.List;
 
 import org.junit.Test;
 
-import com.dstevens.gifts.Gift;
+import com.dstevens.gifts.*;
 import com.dstevens.testing.EqualityTester;
 
 public class WishlistTest {
@@ -49,6 +50,45 @@ public class WishlistTest {
         wishList.addGift(gift3);
         
         assertEquals(Wishlist.with(list(gift1, gift3)), wishList);
+    }
+    
+    @Test
+    public void testThatAsViewedByOwnerStripsOutComments() {
+        Gift gift1 = new Gift("gift 1");
+        Gift gift2 = new Gift("gift 2");
+        User user = mock(User.class);
+        
+        Wishlist wishlist = new Wishlist();
+        wishlist.addGift(gift1);
+        wishlist.addGift(gift2);
+        wishlist.commentOn(gift1, user, "Some comment");
+        wishlist.commentOn(gift1, user, "Another comment");
+        wishlist.commentOn(gift2, user, "Yet another comment");
+        
+        assertEquals(list(gift1, gift2), wishlist.asViewedByOwner().getGifts());
+        assertEquals(list(), wishlist.asViewedByOwner().getGifts().get(0).getComments());
+        assertEquals(list(), wishlist.asViewedByOwner().getGifts().get(1).getComments());
+    }
+    
+    @Test
+    public void testThatAsViewedByFriendLeavesCommentsIn() {
+        Gift gift1 = new Gift("gift 1");
+        Gift gift2 = new Gift("gift 2");
+        User user1 = mock(User.class);
+        User user2 = mock(User.class);
+        
+        Wishlist wishlist = new Wishlist();
+        wishlist.addGift(gift1);
+        wishlist.addGift(gift2);
+        wishlist.commentOn(gift1, user1, "Some comment");
+        wishlist.commentOn(gift1, user2, "Another comment");
+        wishlist.commentOn(gift2, user1, "Yet another comment");
+        
+        assertEquals(list(gift1, gift2), wishlist.asViewedByFriend().getGifts());
+        assertEquals(list(new GiftComment(user1, "Some comment"), new GiftComment(user2, "Another comment")), 
+                     wishlist.asViewedByFriend().getGifts().get(0).getComments());
+        assertEquals(list(new GiftComment(user1, "Yet another comment")), 
+                     wishlist.asViewedByFriend().getGifts().get(1).getComments());
     }
     
 }
