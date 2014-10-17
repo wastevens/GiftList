@@ -4,17 +4,18 @@ import static com.dstevens.collections.Lists.list;
 
 import java.util.*;
 
-import com.dstevens.gifts.Gift;
+import com.dstevens.gifts.*;
 import com.dstevens.utilities.ObjectExtensions;
 
 public class User {
 
     private final String email;
     private final List<User> friends = list();
-    private final List<Gift> desiredGifts = list();
+    private final Wishlist wishList;
     
     public User(String email) {
         this.email = email;
+        this.wishList = new Wishlist();
     }
 
     public void addFriend(User friend) {
@@ -29,6 +30,18 @@ public class User {
 
     public void removeFriend(User friend) {
         friends.remove(friend);
+    }
+
+    public void addGiftToWishlist(Gift gift) {
+        this.wishList.addGift(gift);
+    }
+
+    public Wishlist getWishlist() {
+        return wishList;
+    }
+
+    public void removeGiftFromWishlist(Gift gift) {
+        this.wishList.removeGift(gift);
     }
     
     @Override

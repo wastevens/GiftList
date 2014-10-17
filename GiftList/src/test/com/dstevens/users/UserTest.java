@@ -4,6 +4,7 @@ import static com.dstevens.collections.Lists.list;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
+import com.dstevens.gifts.Gift;
 import com.dstevens.testing.EqualityTester;
 
 public class UserTest {
@@ -69,5 +70,23 @@ public class UserTest {
         
         me.removeFriend(alice);
         assertEquals(list(bob), me.getFriends());
+    }
+    
+    @Test
+    public void testAddingAndRemovingGifts() {
+        User me = new User("my email");
+        Gift bike = new Gift("A new bike");
+        Gift playstation = new Gift("PS4");
+        Gift bbgun = new Gift("BB gun");
+        
+        me.addGiftToWishlist(bike);
+        me.addGiftToWishlist(playstation);
+        
+        assertEquals(Wishlist.with(list(bike, playstation)), me.getWishlist());
+        
+        me.removeGiftFromWishlist(playstation);
+        me.addGiftToWishlist(bbgun);
+        
+        assertEquals(Wishlist.with(list(bike, bbgun)), me.getWishlist());
     }
 }
