@@ -4,6 +4,7 @@ import static com.dstevens.collections.Lists.list;
 
 import java.util.List;
 
+import com.dstevens.users.User;
 import com.dstevens.utilities.ObjectExtensions;
 
 public class Gift implements Comparable<Gift>{
@@ -37,6 +38,14 @@ public class Gift implements Comparable<Gift>{
     @Override
     public int compareTo(Gift that) {
         return this.description.compareTo(that.description);
+    }
+
+    public void addComment(User user, String comment) {
+        comments.add(new GiftComment(user, comment));
+    }
+
+    public List<GiftComment> getComments() {
+        return comments;
     }
     
 }
