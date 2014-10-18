@@ -24,9 +24,9 @@ public class UserTest {
     @Test
     public void testFriends() {
         User me = new User("my email");
-        User alice = new User("Alice's email");
-        User bob = new User("Bob's email");
-        User charlie = new User("Charlie's email");
+        UserIdentifier alice = new UserIdentifier("Alice's email");
+        UserIdentifier bob = new UserIdentifier("Bob's email");
+        UserIdentifier charlie = new UserIdentifier("Charlie's email");
         
         me.addFriend(alice);
         me.addFriend(bob);
@@ -42,8 +42,8 @@ public class UserTest {
     @Test
     public void testThatFriendsAreNotAddedMultipleTimes() {
         User me = new User("my email");
-        User alice = new User("Alice's email");
-        User bob = new User("Bob's email");
+        UserIdentifier alice = new UserIdentifier("Alice's email");
+        UserIdentifier bob = new UserIdentifier("Bob's email");
         
         me.addFriend(alice);
         me.addFriend(bob);
@@ -58,8 +58,8 @@ public class UserTest {
     @Test
     public void testThatRemovingFriendsWhoAreNotPresentDoesNotError() {
         User me = new User("my email");
-        User alice = new User("Alice's email");
-        User bob = new User("Bob's email");
+        UserIdentifier alice = new UserIdentifier("Alice's email");
+        UserIdentifier bob = new UserIdentifier("Bob's email");
         
         me.addFriend(alice);
         me.addFriend(bob);
