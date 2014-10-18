@@ -4,9 +4,13 @@
 	<classpathentry kind="src" path="src/test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="lib/default/commons-lang3.jar"/>
-	<classpathentry kind="lib" path="lib/default/TheWheel.jar"/>
-	<classpathentry kind="lib" path="lib/testDefault/mockito-all.jar"/>
-	<classpathentry kind="lib" path="lib/testDefault/TestUtilities.jar"/>
+	<classpathentry kind="lib" path="lib/default/commons-lang3.jar" sourcepath="lib/sources/commons-lang3-sources.jar"/>
+	<classpathentry kind="lib" path="lib/default/TheWheel.jar" sourcepath="lib/sources/TheWheel-sources.jar"/>
+	<classpathentry kind="lib" path="lib/testDefault/mockito-all.jar" sourcepath="lib/testSources/mockito-all-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/GiftList/lib/testJavadoc/mockito-all-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/testDefault/TestUtilities.jar" sourcepath="lib/testSources/TestUtilities-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
