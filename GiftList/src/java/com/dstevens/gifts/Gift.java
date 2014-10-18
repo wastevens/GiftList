@@ -9,16 +9,14 @@ import com.dstevens.utilities.ObjectExtensions;
 
 public class Gift implements Comparable<Gift> {
 
-    private final GiftIdentifier giftId;
     private final Wish wish;
     private final List<GiftComment> comments;
     
-    public Gift(GiftIdentifier giftId, String description) {
-        this(giftId, new Wish(description), list());
+    public Gift(String description) {
+        this(new Wish(description), list());
     }
     
-    private Gift(GiftIdentifier giftId, Wish wish, List<GiftComment> comments) {
-        this.giftId = giftId;
+    private Gift(Wish wish, List<GiftComment> comments) {
         this.wish = wish;
         this.comments = comments;
     }
@@ -51,14 +49,14 @@ public class Gift implements Comparable<Gift> {
     public boolean equals(Object obj) {
         if (obj instanceof Gift) {
             Gift that = (Gift) obj;
-            return this.giftId.equals(that.giftId);
+            return this.wish.equals(that.wish);
         }
         return false;
     }
     
     @Override
     public int hashCode() {
-        return giftId.hashCode();
+        return wish.hashCode();
     }
     
     @Override
