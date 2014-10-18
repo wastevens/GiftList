@@ -2,7 +2,7 @@ package com.dstevens.gifts;
 
 import com.dstevens.utilities.ObjectExtensions;
 
-class GiftIdentifier implements Comparable<GiftIdentifier> {
+public class GiftIdentifier implements Comparable<GiftIdentifier> {
 
     private final int id;
     

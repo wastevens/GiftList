@@ -2,7 +2,7 @@ package com.dstevens.users;
 
 import com.dstevens.utilities.ObjectExtensions;
 
-class UserIdentifier implements Comparable<UserIdentifier> {
+public class UserIdentifier implements Comparable<UserIdentifier> {
 
     private final String email;
     

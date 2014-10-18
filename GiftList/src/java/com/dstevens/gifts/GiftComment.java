@@ -2,22 +2,22 @@ package com.dstevens.gifts;
 
 import java.util.Optional;
 
-import com.dstevens.users.User;
+import com.dstevens.users.UserIdentifier;
 import com.dstevens.utilities.ObjectExtensions;
 
 public class GiftComment {
 
-    private final User commentor;
+    private final UserIdentifier commentor;
     private final String comment;
     private final Optional<GiftState> giftState;
     
-    public GiftComment(User commentor, String comment) {
+    public GiftComment(UserIdentifier commentor, String comment) {
         this.commentor = commentor;
         this.comment = comment;
         this.giftState = Optional.empty();
     }
     
-    public GiftComment(User commentor, String comment, GiftState giftState) {
+    public GiftComment(UserIdentifier commentor, String comment, GiftState giftState) {
         this.commentor = commentor;
         this.comment = comment;
         this.giftState = Optional.of(giftState);
@@ -29,6 +29,14 @@ public class GiftComment {
     
     public GiftState getState() {
         return giftState.get();
+    }
+    
+    public UserIdentifier getCommentor() {
+        return commentor;
+    }
+    
+    public String getComment() {
+        return comment;
     }
     
     @Override
