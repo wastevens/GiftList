@@ -1,6 +1,6 @@
 package com.dstevens.gifts;
 
-import static com.dstevens.collections.Lists.list;
+import static com.dstevens.collections.Lists.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,10 +32,6 @@ public class Gift implements Comparable<Gift> {
         return GiftState.AVAILABLE;
     }
     
-    private GiftComment last(List<GiftComment> listOfComments) {
-        return listOfComments.get(listOfComments.size() -1);
-    }
-
     public Gift addComment(GiftComment comment) {
         this.comments.add(comment);
         return this;
