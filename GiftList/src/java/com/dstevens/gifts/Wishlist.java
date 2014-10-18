@@ -5,12 +5,21 @@ import static com.dstevens.collections.Lists.list;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.dstevens.gifts.*;
 import com.dstevens.utilities.ObjectExtensions;
 
 public class Wishlist {
 
-    private final List<Gift> gifts = list();
+    private final String name; 
+    private final List<Gift> gifts;
+    
+    public Wishlist(String name) {
+        this.name = name;
+        this.gifts = list();
+    }
+    
+    public String getName() {
+        return name;
+    }
     
     public void addWish(String description) {
         gifts.add(new Gift(description));
