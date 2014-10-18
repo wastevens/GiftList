@@ -10,6 +10,10 @@ public class UserIdentifier implements Comparable<UserIdentifier> {
         this.email = email;
     }
     
+    public String getEmail() {
+        return email;
+    }
+    
     @Override
     public boolean equals(Object that) {
         return ObjectExtensions.equals(this, that);
