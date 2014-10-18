@@ -1,4 +1,4 @@
-package com.dstevens.users;
+package com.dstevens.gifts;
 
 import static com.dstevens.collections.Lists.list;
 

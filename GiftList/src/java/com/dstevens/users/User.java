@@ -4,6 +4,7 @@ import static com.dstevens.collections.Lists.list;
 
 import java.util.List;
 
+import com.dstevens.gifts.Wishlist;
 import com.dstevens.utilities.ObjectExtensions;
 
 public class User implements Comparable<User> {
