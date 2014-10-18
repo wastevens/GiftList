@@ -4,18 +4,16 @@ import static com.dstevens.collections.Lists.list;
 
 import java.util.List;
 
-import com.dstevens.gifts.Gift;
 import com.dstevens.utilities.ObjectExtensions;
 
 public class User implements Comparable<User> {
 
     private final UserIdentifier userId;
     private final List<UserIdentifier> friends = list();
-    private final Wishlist wishlist;
+    private final List<Wishlist> wishlists = list();
     
     public User(String email) {
         this.userId = new UserIdentifier(email);
-        this.wishlist = new Wishlist();
     }
 
     public UserIdentifier getId() {
@@ -36,20 +34,18 @@ public class User implements Comparable<User> {
         friends.remove(friend);
     }
 
-    public void addGiftToWishlist(Gift gift) {
-        this.wishlist.addGift(gift);
+    public void addWishlist(Wishlist wishlist) {
+        if(!wishlists.contains(wishlist)) {
+            wishlists.add(wishlist);
+        }
     }
 
-    public void removeGiftFromWishlist(Gift gift) {
-        this.wishlist.removeGift(gift);
-    }
-    
-    public Wishlist getMyWishlist() {
-        return wishlist.asViewedByOwner();
+    public List<Wishlist> getWishlists() {
+        return wishlists;
     }
 
-    public Wishlist getWishlistForOthers() {
-        return wishlist;
+    public void removeWishlist(Wishlist wishlist) {
+        wishlists.remove(wishlist);
     }
     
     @Override
