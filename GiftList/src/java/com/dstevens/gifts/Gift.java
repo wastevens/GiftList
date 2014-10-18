@@ -12,15 +12,11 @@ public class Gift implements Comparable<Gift> {
     private final Wish wish;
     private final List<GiftComment> comments;
     
-    public Gift(String description) {
-        this(new Wish(description), list());
+    public Gift(Wish wish) {
+        this.wish = wish;
+        this.comments = list();
     }
     
-    private Gift(Wish wish, List<GiftComment> comments) {
-        this.wish = wish;
-        this.comments = comments;
-    }
-
     public Wish asWish() {
         return wish;
     }
@@ -40,6 +36,15 @@ public class Gift implements Comparable<Gift> {
         return listOfComments.get(listOfComments.size() -1);
     }
 
+    public Gift addComment(GiftComment comment) {
+        this.comments.add(comment);
+        return this;
+    }
+    
+    public List<GiftComment> getComments() {
+        return comments;
+    }
+    
     @Override
     public int compareTo(Gift that) {
         return this.wish.compareTo(that.wish);

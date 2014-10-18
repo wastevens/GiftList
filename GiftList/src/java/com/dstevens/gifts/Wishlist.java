@@ -21,8 +21,8 @@ public class Wishlist {
         return name;
     }
     
-    public void addWish(String description) {
-        gifts.add(new Gift(description));
+    public void addWish(Wish wish) {
+        gifts.add(new Gift(wish));
     }
 
     public List<Gift> getGifts() {
