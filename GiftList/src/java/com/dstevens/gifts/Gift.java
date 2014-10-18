@@ -3,29 +3,43 @@ package com.dstevens.gifts;
 import static com.dstevens.collections.Lists.list;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-import com.dstevens.users.User;
 import com.dstevens.utilities.ObjectExtensions;
 
 public class Gift implements Comparable<Gift> {
 
+    private final GiftIdentifier giftId;
     private final Wish wish;
-    private final List<GiftComment> comments = list();
+    private final List<GiftComment> comments;
     
-    public Gift(String description) {
-        this.wish = new Wish(description);
-    }
-
-    public void addComment(User user, String comment) {
-        comments.add(new GiftComment(user, comment));
-    }
-
-    public List<GiftComment> getComments() {
-        return comments;
+    public Gift(GiftIdentifier giftId, String description) {
+        this(giftId, new Wish(description), list());
     }
     
+    private Gift(GiftIdentifier giftId, Wish wish, List<GiftComment> comments) {
+        this.giftId = giftId;
+        this.wish = wish;
+        this.comments = comments;
+    }
+
     public Wish asWish() {
         return wish;
+    }
+    
+    public GiftState getState() {
+        List<GiftComment> listOfComments = comments.stream().filter(c -> c.hasState()).collect(Collectors.toList());
+        if(listOfComments.stream().anyMatch(c -> c.getState().equals(GiftState.REMOVED))) {
+            return GiftState.REMOVED;
+        }
+        if(listOfComments.size() > 0) {
+            return last(listOfComments).getState();
+        }
+        return GiftState.AVAILABLE;
+    }
+    
+    private GiftComment last(List<GiftComment> listOfComments) {
+        return listOfComments.get(listOfComments.size() -1);
     }
 
     @Override
@@ -37,14 +51,14 @@ public class Gift implements Comparable<Gift> {
     public boolean equals(Object obj) {
         if (obj instanceof Gift) {
             Gift that = (Gift) obj;
-            return this.wish.equals(that.wish);
+            return this.giftId.equals(that.giftId);
         }
         return false;
     }
     
     @Override
     public int hashCode() {
-        return wish.hashCode();
+        return giftId.hashCode();
     }
     
     @Override
