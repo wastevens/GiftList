@@ -12,5 +12,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/testDefault/TestUtilities.jar" sourcepath="lib/testSources/TestUtilities-sources.jar"/>
+	<classpathentry kind="lib" path="lib/default/aopalliance.jar"/>
+	<classpathentry kind="lib" path="lib/default/commons-logging.jar"/>
+	<classpathentry kind="lib" path="lib/default/spring-aop.jar"/>
+	<classpathentry kind="lib" path="lib/default/spring-beans.jar"/>
+	<classpathentry kind="lib" path="lib/default/spring-context.jar"/>
+	<classpathentry kind="lib" path="lib/default/spring-core.jar"/>
+	<classpathentry kind="lib" path="lib/default/spring-expression.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

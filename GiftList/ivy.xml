@@ -13,7 +13,8 @@
       <artifact name="${project.name}-sources" type="source" ext="jar" conf="sources"/>
     </publications>
     <dependencies>
-        <dependency org="com.dstevens" name="TheWheel" rev="1.1.2" conf="default;sources"/>
+        <dependency org="com.dstevens"        name="TheWheel" rev="1.1.2" conf="default;sources"/>
+        <dependency org="org.springframework" name="spring-context" rev="4.0.3.RELEASE" conf="default;sources;javadoc"/>
         <dependency org="com.dstevens" name="TestUtilities" rev="1.0.0" conf="testDefault->default;testSources->sources;testJavadoc->javadoc"/>
         <dependency org="org.mockito" name="mockito-all" rev="1.9.5" conf="testDefault->default;testSources->sources;testJavadoc->javadoc"/>
     </dependencies>
