@@ -1,20 +1,26 @@
 package com.dstevens.users;
 
-import static com.dstevens.collections.Lists.list;
-
 import java.util.List;
 
 import com.dstevens.gifts.Wishlist;
 import com.dstevens.utilities.ObjectExtensions;
 
+import static com.dstevens.collections.Lists.list;
+
 public class User implements Comparable<User> {
 
     private final UserIdentifier userId;
+    private final String email;
     private final List<UserIdentifier> friends = list();
     private final List<Wishlist> wishlists = list();
     
-    public User(String email) {
-        this.userId = new UserIdentifier(email);
+    public User(UserIdentifier userIdentifier, String email) {
+        this.userId = userIdentifier;
+		this.email = email;
+    }
+    
+    public String getEmail() {
+    	return email;
     }
 
     public UserIdentifier getId() {

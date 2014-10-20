@@ -16,12 +16,17 @@ public class UserDao {
 		return users.containsKey(userIdentifier) ? Optional.of(users.get(userIdentifier)) : Optional.empty();
 	}
 	
-	public void saveUser(User user) {
+	public User saveUser(User user) {
 		users.put(user.getId(), user);
+		return user;
 	}
 	
 	public void deleteUser(User user) {
 		users.remove(user.getId());
+	}
+
+	public boolean userExists(UserIdentifier userIdentifier) {
+		return users.containsKey(userIdentifier);
 	}
 	
 }

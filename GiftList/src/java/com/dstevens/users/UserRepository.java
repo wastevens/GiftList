@@ -21,16 +21,20 @@ public class UserRepository {
 		return userDao.loadUser(userIdentifier);
 	}
 	
-	public void saveUser(User user) {
-		userDao.saveUser(user);
+	public boolean isUser(UserIdentifier userIdentifier) {
+		return userDao.userExists(userIdentifier);
+	}
+	
+	public User saveUser(User user) {
+		return userDao.saveUser(user);
 	}
 	
 	public void deleteUser(User user) {
 		userDao.deleteUser(user);
 	}
 	
-	public void createUser(String email) {
-		userDao.saveUser(userFactory.createUser(email));
+	public User createUser(String email) {
+		return saveUser(userFactory.createUser(email));
 	}
 	
 	

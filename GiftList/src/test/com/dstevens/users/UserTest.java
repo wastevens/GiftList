@@ -1,10 +1,12 @@
 package com.dstevens.users;
 
-import static com.dstevens.collections.Lists.list;
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import com.dstevens.testing.EqualityTester;
+
+import static com.dstevens.collections.Lists.list;
+
+import static org.junit.Assert.assertEquals;
 
 public class UserTest {
 
@@ -13,18 +15,19 @@ public class UserTest {
         String emailAddress= "some email address";
         String anotherEmailAddress= "another email address";
         
-        EqualityTester.testing(new User(emailAddress)).
-        assertEqualTo(new User(emailAddress)).
-        assertNotEqualTo(new User(anotherEmailAddress)).
+        EqualityTester.testing(new User(new UserIdentifier(1), emailAddress)).
+        assertEqualTo(new User(new UserIdentifier(1), emailAddress)).
+        assertNotEqualTo(new User(new UserIdentifier(2), anotherEmailAddress)).
+        assertNotEqualTo(new User(new UserIdentifier(1), anotherEmailAddress)).
         assertNotEqualTo("Not a UserTest");
     }
     
     @Test
     public void testFriends() {
-        User me = new User("my email");
-        UserIdentifier alice = new UserIdentifier("Alice's email");
-        UserIdentifier bob = new UserIdentifier("Bob's email");
-        UserIdentifier charlie = new UserIdentifier("Charlie's email");
+        User me = new User(new UserIdentifier(1), "my email");
+        UserIdentifier alice = new UserIdentifier(2);
+        UserIdentifier bob = new UserIdentifier(3);
+        UserIdentifier charlie = new UserIdentifier(4);
         
         me.addFriend(alice);
         me.addFriend(bob);
@@ -39,9 +42,9 @@ public class UserTest {
     
     @Test
     public void testThatFriendsAreNotAddedMultipleTimes() {
-        User me = new User("my email");
-        UserIdentifier alice = new UserIdentifier("Alice's email");
-        UserIdentifier bob = new UserIdentifier("Bob's email");
+        User me = new User(new UserIdentifier(1), "my email");
+        UserIdentifier alice = new UserIdentifier(2);
+        UserIdentifier bob = new UserIdentifier(3);
         
         me.addFriend(alice);
         me.addFriend(bob);
@@ -55,9 +58,9 @@ public class UserTest {
     
     @Test
     public void testThatRemovingFriendsWhoAreNotPresentDoesNotError() {
-        User me = new User("my email");
-        UserIdentifier alice = new UserIdentifier("Alice's email");
-        UserIdentifier bob = new UserIdentifier("Bob's email");
+        User me = new User(new UserIdentifier(1), "my email");
+        UserIdentifier alice = new UserIdentifier(2);
+        UserIdentifier bob = new UserIdentifier(3);
         
         me.addFriend(alice);
         me.addFriend(bob);

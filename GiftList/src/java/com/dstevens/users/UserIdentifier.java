@@ -4,16 +4,16 @@ import com.dstevens.utilities.ObjectExtensions;
 
 public class UserIdentifier implements Comparable<UserIdentifier> {
 
-    private final String email;
-    
-    public UserIdentifier(String email) {
-        this.email = email;
-    }
-    
-    public String getEmail() {
-        return email;
-    }
-    
+    private final int id;
+
+	public UserIdentifier(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+	
     @Override
     public boolean equals(Object that) {
         return ObjectExtensions.equals(this, that);
@@ -31,7 +31,7 @@ public class UserIdentifier implements Comparable<UserIdentifier> {
 
     @Override
     public int compareTo(UserIdentifier o) {
-        return this.email.compareTo(o.email);
+        return this.id - o.id;
     }
     
 }
